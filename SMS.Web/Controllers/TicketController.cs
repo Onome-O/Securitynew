@@ -25,6 +25,7 @@ public class TicketController : BaseController
    
     // POST /ticket/close/{id}
     [HttpPost]
+    [Authorize(Roles="admin,support")]
     [ValidateAntiForgeryToken]
     public IActionResult Close(int id)
     {
@@ -57,6 +58,7 @@ public class TicketController : BaseController
    
     // POST /ticket/create
     [HttpPost]
+    [Authorize(Roles="admin,support")]
     [ValidateAntiForgeryToken]
     public IActionResult Create([Bind("StudentId, Issue")] TicketViewModel tvm)
     {

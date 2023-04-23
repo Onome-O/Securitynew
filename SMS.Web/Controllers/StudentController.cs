@@ -47,6 +47,7 @@ public class StudentController : BaseController
 
     // POST /student/create
     [HttpPost]
+    [Authorize(Roles="admin")]
     [ValidateAntiForgeryToken]
     public IActionResult Create([Bind("Name, Email, Course, Age, Grade, PhotoUrl")] Student s)
     {   
@@ -92,6 +93,7 @@ public class StudentController : BaseController
 
     // POST /student/edit/{id}
     [HttpPost]
+    [Authorize(Roles="admin,support")]
     [ValidateAntiForgeryToken]
     public IActionResult Edit(int id, Student s)
     {
@@ -137,6 +139,7 @@ public class StudentController : BaseController
 
     // POST /student/delete/{id}
     [HttpPost]
+    [Authorize(Roles="admin")]
     [ValidateAntiForgeryToken]   
     public IActionResult DeleteConfirm(int id)
     {
@@ -175,6 +178,7 @@ public class StudentController : BaseController
 
     // POST /student/ticketcreate
     [HttpPost]
+    [Authorize]
     [ValidateAntiForgeryToken]
     public IActionResult TicketCreate([Bind("StudentId, Issue")] Ticket t)
     {
@@ -237,8 +241,9 @@ public class StudentController : BaseController
 
     // POST /student/ticketdeleteconfirm/{id}
     [HttpPost]
+    [Authorize]
     [ValidateAntiForgeryToken]
-    public IActionResult TicketDeleteConfirm(int id, int studentId)
+    public IActionResult TicketDeleteConfirm(int id, [Bind("StudentId, Issue")] int studentId)
     {
         // delete ticket via service
         var deleted = svc.DeleteTicket(id);

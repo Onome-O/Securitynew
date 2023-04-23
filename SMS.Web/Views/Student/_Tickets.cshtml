@@ -24,34 +24,35 @@
                     <td>@t.Issue</td>
                     <td>@t.CreatedOn</td>  
                     <td>                       
-                        @if(t.Active) {
-                            <i class="bi bi-bell-fill"></i>
-                        } else {
-                            <i class="bi bi-bell-slash"></i>
-                        }                        
+                      
+                            <i class="bi bi-bell-fill" asp-condition="@t.Active"></i>
+                        
+                            <i class="bi bi-bell-slash" asp-condition="@(!t.Active)"></i>
+                                      
                     </td>
+                  
                     <td>
-                        @if (t.Active) {
+                        
                             <a asp-action="TicketDelete" asp-route-id="@t.Id" class="btn btn-sm btn-outline-danger">
-                                <i class="bi bi-trash-fill" title="delete ticket"></i>
+                                <i class="bi bi-trash-fill" title="delete ticket" asp-condition="@t.Active"></i>
                                 <span class="ms-1 d-none d-md-inline">Delete</span>    
                             </a>
-                        } else {
+                        
                             <!-- use button to allow use of disable attribute -->
                             <button disabled class="btn btn-sm btn-outline-warning">
-                                <i class="bi bi-trash-fill" title="delete ticket disabled"></i>
+                                <i class="bi bi-trash-fill" title="delete ticket disabled" asp-condition="@(!t.Active)"></i>
                                 <span class="ms-1 d-none d-md-inline">Delete</span>    
                             </button>
-                        }
-                        @if (t.Active) {
+                        
+              
                             <a asp-action="TicketEdit" asp-route-id="@t.Id" class="btn btn-sm btn-outline-dark">
-                                <i class="bi bi-pen-fill" title="edit ticket"></i>
+                                <i class="bi bi-pen-fill" title="edit ticket" asp-condition="@t.Active"></i>
                                 <span class="ms-1 d-none d-md-inline">Edit</span>    
                             </a>
-                        } else {
+                        
                             <!-- use button to allow use of disable attribute -->
                             <button disabled class="btn btn-sm btn-outline-warning">
-                                <i class="bi bi-pen-fill" title="edit ticket disabled"></i>
+                                <i class="bi bi-pen-fill" title="edit ticket disabled" asp-condition="@(!t.Active)"></i>
                                 <span class="ms-1 d-none d-md-inline">Edit</span>    
                             </button>
                         }

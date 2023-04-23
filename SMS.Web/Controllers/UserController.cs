@@ -24,6 +24,13 @@ public class UserController : BaseController
     }
 
     // TBC - add Profile Action - optional question
+    public IActionResult Profile()
+    {
+      var id = User.GetSignedInUserId();
+      var user = svc.GetUser(id);
+
+      return View(user);
+    }
 
 
     // POST /user/login

@@ -26,5 +26,8 @@ public interface IStudentService
     bool   DeleteTicket(int id);
     IList<Ticket> GetOpenTickets();  
 
+    //-------------------User Management ------------------
+    
+
 }
     

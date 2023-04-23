@@ -9,7 +9,7 @@ public class UserViewModel
     [Required]
     public string Name { get; set; }
     
-    Required]
+    [Required]
     [EmailAddress]
     public string Email { get; set; }
 
@@ -18,11 +18,10 @@ public class UserViewModel
 
     [Compare("Password", ErrorMessage = "Passwords don't match!")]
     [Display(Name = "Confirm Password")]
+    public string PasswordConfirm { get; set; }
+    
 
     [Required]
-    public
-
-    
-  
+    public Role Role { get; set;}
 
 }
